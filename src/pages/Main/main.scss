@@ -1,0 +1,42 @@
+.main {
+  margin-top: 110px;
+}
+
+.main__header {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin: 30px 10px;
+  justify-content: center;
+
+  .cat-item {
+    font-size: 20px;
+    display: block;
+    padding: 5px 20px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+  }
+}
+
+.activeCat {
+  background-color: #e8e8e8;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+  border: 1px solid #ffbe49;
+  transition: ease-in-out 0.5s;
+}
+
+.main__body {
+  display: flex;
+  gap: 100px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+@media screen and (max-width: 600px) {
+  .main__header {
+    .cat-item {
+      font-size: 16px;
+    }
+  }
+}

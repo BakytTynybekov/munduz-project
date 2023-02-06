@@ -1,0 +1,240 @@
+.food {
+  display: grid;
+  justify-items: center;
+  width: 300px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+
+  &__image {
+    img {
+      width: 100%;
+      height: 300px;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+  }
+
+  &__info {
+    width: 100%;
+  }
+
+  &__title {
+    font-size: 16px;
+    font-weight: 400;
+    cursor: pointer;
+    margin: 10px;
+  }
+}
+
+.foodPage,
+.basketItem {
+  display: grid;
+  grid-template-columns: 60% 1fr;
+
+  &__title {
+    margin-bottom: 40px;
+  }
+
+  p,
+  h1 {
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  &__image {
+    img {
+      width: 100%;
+      border-radius: 10px;
+    }
+  }
+
+  &__info {
+    padding: 20px 40px;
+  }
+}
+.price-block {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 20px;
+  margin: 10px 0;
+}
+
+.food-count {
+  display: flex;
+  overflow: hidden;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px;
+  max-width: 113px;
+  text-align: center;
+
+  span {
+    display: inline-block;
+    margin: 0 5px;
+    font-size: 18px;
+  }
+
+  button {
+    background-color: inherit;
+    border: none;
+    cursor: pointer;
+    margin: 5px 10px;
+    font-size: 16px;
+  }
+}
+.basket-btn {
+  display: inline-block;
+  width: 90%;
+  border-radius: 4px;
+  border: 1px solid #c3957a;
+  margin: 10px 10px 0;
+  padding: 15px;
+  margin: 10px 0;
+  font-size: 16px;
+  color: #c3957a;
+  background-color: inherit;
+  transition: background-color 0.3s ease-in;
+  cursor: pointer;
+
+  img {
+    width: 30px;
+  }
+
+  &:hover {
+    background-color: #c3957a;
+    color: white;
+  }
+}
+
+.basketItem {
+  display: grid;
+  grid-template-columns: 150px 1fr;
+  max-width: 600px;
+  justify-content: space-between;
+  align-items: center;
+  margin: auto;
+  padding: 0;
+  padding-right: 50px;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  border-radius: 10px;
+  margin: 0px auto 20px;
+
+  &__info {
+    padding: 10px;
+  }
+
+  &__title {
+    margin: 10px 0;
+  }
+
+  .price-block {
+    margin-top: 0px;
+  }
+  &-btn {
+    padding: 5px 10px;
+  }
+
+  &__image {
+    img {
+      width: 100%;
+    }
+  }
+
+  &__title {
+    font-size: 16px;
+  }
+}
+
+.disabledBtn {
+  background-color: inherit;
+  padding: 0;
+  &:hover {
+    background-color: inherit;
+  }
+}
+
+.loadingImg {
+  width: 45px !important;
+}
+@media screen and (max-width: 900px) {
+  .foodPage {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .foodPage {
+    h1 {
+      font-size: 22px;
+      margin-bottom: 16px;
+    }
+
+    &__info p {
+      font-size: 14px;
+    }
+  }
+  .price-block {
+    display: block !important;
+  }
+  .food-count {
+    margin: auto;
+  }
+
+  .basketItem {
+    grid-template-columns: 120px 1fr;
+
+    p {
+      margin: 0;
+      padding: 0;
+    }
+    &__info {
+      margin: 0;
+      padding: 0;
+    }
+    &__title {
+      font-size: 13px;
+      font-weight: normal;
+      margin: 5px 0;
+    }
+
+    &__image {
+      img {
+        width: 120px;
+      }
+    }
+    .basket-btn {
+      font-size: 12px;
+      padding: 0;
+      width: 70%;
+      margin: 0 auto;
+      border: none;
+    }
+    &__btn .basket-btn {
+      margin: 0;
+      padding: 0;
+      font-size: 12px;
+      border: none !important;
+    }
+    .food-price {
+      font-size: 13px;
+    }
+    .food-count {
+      button,
+      span {
+        font-size: 12px;
+        margin: 1px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .basketItem {
+    &__image {
+      img {
+        width: 100px;
+      }
+    }
+  }
+}

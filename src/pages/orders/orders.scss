@@ -1,0 +1,164 @@
+.ordersPage {
+  .tabs-mobile {
+    display: none;
+  }
+  h1 {
+    text-align: center;
+    margin: 40px;
+    font-size: 50px;
+  }
+
+  .tabs {
+    margin-bottom: 70px;
+  }
+  .tabs {
+    border-bottom: 1px solid hsla(0, 0%, 47%, 0.5);
+    display: flex;
+    margin: 20px auto;
+    padding: 10px 0 0;
+    width: 250px;
+  }
+  .tabs button {
+    background-color: inherit;
+    border: none;
+    color: #777;
+    cursor: pointer;
+    display: block;
+    font-family: Montserrat;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 18px 10px;
+    text-transform: uppercase;
+    transition: font-weight, color 0.3s ease;
+    width: 100%;
+  }
+  .tabs .active-btn {
+    border-bottom: 1px solid red;
+    color: #000;
+  }
+}
+
+.orders {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  justify-content: center;
+
+  h1 {
+    text-align: center;
+  }
+
+  &-item {
+    width: 500px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
+      rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+    padding: 10px 30px;
+
+    p {
+      vertical-align: left;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgba(119, 119, 119, 0.1);
+      margin: 20px;
+    }
+  }
+}
+
+.orders-btn {
+  text-align: center;
+  button {
+    background-color: inherit;
+    border: none;
+
+    span {
+      font-size: 50px;
+      color: green;
+      cursor: pointer;
+
+      &:hover {
+        color: black;
+      }
+    }
+
+    .x {
+      color: red;
+    }
+
+    .wait {
+      color: rgb(136, 85, 28);
+    }
+  }
+}
+
+.orders {
+  display: flex;
+  flex-wrap: wrap;
+  li {
+    list-style: none;
+    font-size: 14px;
+    border-bottom: 2px solid #efecec;
+  }
+
+  .order {
+    display: grid;
+  }
+
+  ul {
+    margin: 0;
+    padding: 5px;
+  }
+}
+
+.copy {
+  display: inline-block;
+  cursor: pointer;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.order-footer {
+  display: flex;
+  justify-content: space-around;
+
+  button {
+    display: block;
+    padding: 10px;
+    background-color: rgb(104, 216, 104);
+    border: none;
+    border-radius: 7px;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+    height: 40px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: black;
+      color: white;
+    }
+  }
+}
+
+.order {
+  width: 300px;
+  background-color: #f7f7f7;
+  color: #515151;
+
+  h3 {
+    padding: 0;
+    margin: 0;
+  }
+  .order-item {
+    border-bottom: 2px solid #efecec;
+    padding-bottom: 5px;
+  }
+
+  img {
+    width: 80px;
+  }
+
+  h4 {
+    font-weight: normal;
+    font-size: 16px;
+    margin: 7px 0;
+  }
+}
