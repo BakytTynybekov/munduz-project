@@ -5,7 +5,6 @@ import "./orders.scss";
 import { useState } from "react";
 import Select from "react-select";
 import { GeneralFirebaseContext } from "../../context/GeneralFirabesContext";
-import { tab } from "@testing-library/user-event/dist/tab";
 
 const options = [
   { value: "active", label: "Активные" },
@@ -13,8 +12,6 @@ const options = [
 ];
 
 function Orders() {
-  const [state, setState] = useState(false);
-  const [status, setStatus] = useState([""]);
   const [filteredOrders, setFilteredOrders] = useState([]);
   const [selectedOption, setSelectedOption] = useState({
     value: "active",
@@ -43,7 +40,13 @@ function Orders() {
         let z = { quantity: food.quantity, name: food.name };
         return z;
       });
-      await navigator.clipboard.writeText(JSON.stringify(newArr));
+      const s = await newArr
+        .map(({ name, quantity }) => {
+          return name + " " + quantity + " шт. ";
+        })
+        .join("");
+
+      await navigator.clipboard.writeText(s);
     } catch (err) {
       console.error("Failed to copy: ", err);
     }
@@ -51,10 +54,20 @@ function Orders() {
 
   const handleChangeStatus = (id, data) => {
     if (data.status === "inProcess") {
-      deleteOrder(id);
+      const changeSt = new Promise((resolve, reject) => {
+        resolve(deleteOrder(id));
+      });
+      changeSt
+        .then(() => window.location.reload(true))
+        .catch(() => alert("Не получилось обновить статус"));
     } else {
       let newData = { ...data, status: "inProcess" };
-      updateOrder(id, newData);
+      const changeSt = new Promise((resolve, reject) => {
+        resolve(updateOrder(id, newData));
+      });
+      changeSt
+        .then(() => setTimeout(() => window.location.reload(true), 1000))
+        .catch(() => alert("Не получилось обновить статус"));
     }
   };
 

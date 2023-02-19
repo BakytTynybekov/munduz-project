@@ -1,5 +1,5 @@
 header {
-  background: #fff;
+  background: #fbfaf4;
   position: fixed;
   top: 0;
   left: 0;
@@ -18,7 +18,10 @@ header {
 
 .header__logo {
   cursor: pointer;
+  overflow: hidden;
+  background-color: #fbfaf4;
   img {
+    border-radius: 20px;
     width: 100px;
   }
 }
@@ -73,5 +76,40 @@ nav {
   img {
     width: 24px;
     fill: red !important;
+  }
+}
+@media screen and (max-width: 450px) {
+  .header__logo {
+    cursor: pointer;
+    img {
+      width: 80px;
+    }
+  }
+
+  .changedHeader {
+    transition: linear 0.3s;
+    box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
+  }
+
+  .header__menu {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+    margin: 0;
+    padding: 0;
+    justify-content: flex-end;
+    &-item {
+      font-size: 18px;
+      list-style: none;
+
+      &-link {
+        text-decoration: none;
+        color: black;
+
+        &:hover {
+          color: #ffbe49;
+        }
+      }
+    }
   }
 }

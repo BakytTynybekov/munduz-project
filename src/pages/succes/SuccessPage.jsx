@@ -7,7 +7,7 @@ function SuccessPage({ message }) {
   useEffect(() => {
     setTimeout(() => {
       setState(false);
-    }, 5000);
+    }, 2000);
   }, []);
   return (
     <>

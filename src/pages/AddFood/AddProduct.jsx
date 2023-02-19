@@ -7,15 +7,22 @@ const initialValue = {
   name: "",
   cat: "",
   description: "",
-  img: "",
   price: "",
 };
 function AddProduct() {
   const [values, setValues] = useState(initialValue);
   const { addFood } = useContext(GeneralFirebaseContext);
+  const [newImage, setNewImage] = useState("");
+
   const handleSubmit = (e) => {
     e.preventDefault(e);
-    addFood(values);
+    const s = new Promise((resolve, reject) => {
+      resolve(addFood(values, newImage));
+    });
+
+    s.then(() => console.log("added")).catch(() =>
+      alert("Не получилось добавить")
+    );
   };
 
   return (
@@ -55,10 +62,8 @@ function AddProduct() {
           <label htmlFor="">Ссылка на фото</label>
           <input
             required
-            value={values.img}
-            onChange={(e) => setValues({ ...values, img: e.target.value })}
-            type="text"
-            placeholder="https://-------.jpg(png)..."
+            onChange={(e) => setNewImage(e.target.files[0])}
+            type="file"
           />
         </p>
         <p>

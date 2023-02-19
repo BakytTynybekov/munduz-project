@@ -13,6 +13,7 @@ import {
   onSnapshot,
   updateDoc,
 } from "firebase/firestore";
+import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
 import { useEffect, useState } from "react";
 import { createContext } from "react";
 import * as firebaseApp from "../firebase/firebase";
@@ -49,12 +50,32 @@ export const FirebaseProvider = ({ children }) => {
     }
   };
 
-  const addFood = async (food) => {
-    try {
-      await addDoc(refcollection, food);
-    } catch (error) {
-      console.log(error.message);
-    }
+  // const addFood = async (food) => {
+  //   try {
+  //     await addDoc(refcollection, food);
+  //   } catch (error) {
+  //     console.log(error.message);
+  //   }
+  // };
+
+  const addFood = async (newProduct, image) => {
+    const refHosting = ref(firebaseApp.storage, `images/${image.name}`);
+    const uploadImage = uploadBytesResumable(refHosting, image);
+
+    uploadImage.on(
+      "state_change",
+      (snapshot) => {},
+      (err) => {
+        console.log(err.message);
+      },
+      () =>
+        getDownloadURL(uploadImage.snapshot.ref).then((url) =>
+          addDoc(collection(firebaseApp.fireStore, "foods"), {
+            ...newProduct,
+            img: url,
+          })
+        )
+    );
   };
 
   const addOrder = async (order) => {
@@ -97,6 +118,10 @@ export const FirebaseProvider = ({ children }) => {
     await deleteDoc(doc(firebaseApp.fireStore, "orders", id));
   };
 
+  const deleteFood = async (id) => {
+    await deleteDoc(doc(firebaseApp.fireStore, "foods", id));
+  };
+
   useEffect(() => {
     getAllFoods();
     getOrdersFromFirebase();
@@ -115,6 +140,7 @@ export const FirebaseProvider = ({ children }) => {
     getAllFoods,
     updateOrder,
     deleteOrder,
+    deleteFood,
   };
 
   return (

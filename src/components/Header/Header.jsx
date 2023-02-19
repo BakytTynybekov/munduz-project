@@ -1,6 +1,6 @@
 import "./header.scss";
 import { Link, useNavigate } from "react-router-dom";
-import img from "../../images/munduz-logo.png";
+import img from "../../images/logo.jpg";
 import basketImg from "../../images/basket.svg";
 import { useContext, useEffect, useState } from "react";
 import { classNames } from "../../helpers/classNames/classNames";
@@ -68,9 +68,7 @@ function Header() {
                 className="header__basket"
               >
                 <img src={basketImg} alt="" />
-                <p>
-                  {sum[1]} <span>/</span> {sum[0]} p.
-                </p>
+                <p>{sum[1]}</p>
               </div>
             )}
           </nav>

@@ -34,7 +34,6 @@
       border-radius: 5px;
       color: #181818;
       padding: 0 35px;
-      height: 40px;
       text-align: center;
       line-height: 40px;
       background-color: #fff;
@@ -149,8 +148,9 @@
 
 .total-price {
   display: flex;
-  justify-content: space-around;
+  gap: 40px;
   align-items: center;
+  justify-content: center;
 
   padding-left: 40px;
 
@@ -166,14 +166,14 @@
   form {
     grid-template-columns: 2fr 1fr;
     display: grid;
-    padding: 0 20px;
-    justify-self: start;
-    justify-self: flex-start;
-    align-items: flex-start;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
     text-align: center;
     input,
     button,
     label {
+      display: block;
       margin: 0 auto;
       margin-bottom: 10px;
     }
@@ -194,7 +194,7 @@
       padding: 10px 0;
       background-color: #c3957a;
       color: white;
-      grid-column: span 2;
+      grid-column: span 4;
       cursor: pointer;
 
       &:hover {
@@ -205,8 +205,65 @@
 }
 
 @media screen and (max-width: 900px) {
+  .basket__summary {
+    h2 {
+      display: none;
+    }
+
+    h3,
+    p {
+      font-size: 16px;
+    }
+    ul {
+      display: none;
+    }
+
+    font-size: 16px;
+  }
   .basket-orders-container {
     display: block !important;
     grid-template-columns: 1fr !important;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .basket__summary {
+    h2 {
+      display: none;
+    }
+
+    h4,
+    p {
+      font-size: 14px;
+    }
+    ul {
+      display: none;
+    }
+
+    font-size: 12px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .basket__summary {
+    form {
+      input {
+        width: 120px;
+      }
+    }
+  }
+
+  .order-type {
+    p,
+    h3 {
+      font-size: 14px !important;
+    }
+  }
+
+  .order-type-btns {
+    button {
+      font-size: 12px !important;
+      padding: 0 10px !important;
+    }
   }
 }

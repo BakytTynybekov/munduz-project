@@ -1,11 +1,12 @@
 import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { GeneralContext } from "../../context/GeneralContext";
+import { GeneralFirebaseContext } from "../../context/GeneralFirabesContext";
 import { classNames } from "../../helpers/classNames/classNames";
 import loadingGif from "../../images/loading.svg";
 import "./food.scss";
 
-function Food({ food, addClasses }) {
+function Food({ food, addClasses, id }) {
   const [count, setCount] = useState(1);
   const [quantity, setQuantity] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
@@ -14,6 +15,7 @@ function Food({ food, addClasses }) {
     updateStateAfterLocalStorage,
     deleteFromLocalStorage,
   } = useContext(GeneralContext);
+  const { user, deleteFood } = useContext(GeneralFirebaseContext);
   const navigate = useNavigate();
   let mainClass = classNames([], addClasses);
 
@@ -25,6 +27,16 @@ function Food({ food, addClasses }) {
   }, []);
 
   const onBasketBtn = () => {
+    if (user) {
+      console.log(id);
+      const s = new Promise((resolve, reject) => {
+        resolve(deleteFood(id));
+      });
+
+      s.then(() => window.location.reload(true)).catch(() =>
+        alert("Не получилось удалить")
+      );
+    }
     setIsLoading(true);
     setTimeout(() => setIsLoading(false), 500);
     setTimeout(() => {
@@ -117,7 +129,11 @@ function Food({ food, addClasses }) {
           onClick={() => onBasketBtn(mainClass)}
         >
           {!isLoading && (
-            <>{mainClass === "basketItem" ? "Удалить" : "Добавить в корзину"}</>
+            <>
+              {mainClass === "basketItem" || user
+                ? "Удалить"
+                : "Добавить в корзину"}
+            </>
           )}
 
           {isLoading && <img className="loadingImg" src={loadingGif} alt="" />}

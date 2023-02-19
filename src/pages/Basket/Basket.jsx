@@ -86,7 +86,7 @@ function Basket() {
                 <p>{sum[0]} p.</p>
               </div>
               <form onSubmit={(e) => handleSubmit(e)}>
-                <label htmlFor="table">Номер вашего стола: </label>
+                <h4 htmlFor="table">Номер вашего стола: </h4>
                 <input
                   className="table-number"
                   type="text"

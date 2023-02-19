@@ -154,6 +154,14 @@
   }
 }
 
+.foodPage {
+  &__image {
+    img {
+      max-width: 700px;
+    }
+  }
+}
+
 .loadingImg {
   width: 45px !important;
 }
